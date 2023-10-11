@@ -3,7 +3,7 @@
 # Autor:      Julio Cesar <jcms2665@gmail.com>
 # Fecha:      septiembre 2023
 # Datos:      calificacion.csv
-# Github:     https://github.com/jcms2665/UNAM-2021-Multivariado
+
 
 
 #               CONTENIDO
@@ -34,11 +34,19 @@ library(knitr)
 
 #1. Cargar base
 
-#1.1 Opcion 2
+url <- "https://raw.githubusercontent.com/jcms2665/UNAM-LCF-2023/main/2.%20An%C3%A1lisis%20de%20componentes%20principales/Ejercicio/alumnos.csv"
+horario <- read.csv(url)
 
-setwd(".....")
-horario<-read.csv("horario.csv", sep=",",header = TRUE)
-View(horario)
+# Variables:
+# Deportes:   calificación en esta materia
+# h_lectua:   horas de lectura a la semana
+# h_c_amigos: horas con las y los amigos
+# filosofía:  calificación en la materia
+
+
+# Verificar las primeras líneas de los datos
+head(horario)
+     
 
 #2. Ajuste del modelo
 
@@ -64,9 +72,6 @@ acp
 
 #3.1 Grafico de sedimentacion (Varianza)
 screeplot(acp,type="lines")
-
-
-
 
 
 
