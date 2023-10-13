@@ -19,20 +19,21 @@
 rm(list=ls())     
 graphics.off()    
 
-library(foreign)
-library(ggplot2)
-library(psych)
-library(dplyr)
-library(psych)
-library(tidyr)
+paquetes <- c("tidyverse", "foreign", "factoextra", "ggplot2", "psych", "httr")
+for (i in paquetes) {if (!require(i, character.only = TRUE)) {install.packages(i);library(i, character.only = TRUE)} else {library(i, character.only = TRUE)}}
 
 
 #1. Cargar base
 
-setwd("...")
+# URL del archivo
+url <- "https://github.com/jcms2665/UNAM-LCF-2023/raw/main/4.%20An%C3%A1lisis%20factorial%20con%20datos%20categ%C3%B3ricos/Latinobarometro_2018_Esp_R_v20190303.rds"
 
-latino <- readRDS("Latinobarometro_2018_Esp_R_v20190303.Rds")
+# Descargar el archivo a un archivo temporal
+tmp_file <- tempfile()
+download.file(url, tmp_file, method = "libcurl")
 
+# Leer el archivo .rds
+latino <- readRDS(tmp_file)
 
 
 # Variables:
@@ -90,4 +91,3 @@ cor.plot(poly_cor$rho, numbers=T, upper=FALSE, main = "Correlacion tetracorica",
 poly_model = fa(dat, nfactor=2, cor="poly", fm="mle", rotate = "none")
 poly_model$loadings
 fa.diagram(poly_model)
-
