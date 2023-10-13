@@ -66,7 +66,7 @@ load
 
 #5. Para la tarea
 
-url="https://raw.githubusercontent.com/jcms2665/UNAM-LCF-2023/main/3.%20An%C3%A1lisis%20factorial/Tarea/videos_youtube.csv"
-videos<-read.csv(url)
+# Carga la base de datos "videos_youtube.csv" y nombrala "videos"
 
-# OJO: Tienes que sustituir el nombre de la base de datos, es decir, cambiar "pacientes" por "videos"
+# Luego, tienes que sustituir el nombre de la base de datos, es decir, cambiar "pacientes" por "videos"
+
