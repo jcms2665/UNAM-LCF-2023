@@ -20,22 +20,24 @@
 rm(list=ls())     
 graphics.off()    
 
-library(foreign)
-library(ggplot2)
-library(psych)
-library(dplyr)
-library(psych)
-library(tidyr)
-library(htmltools)
-library(klaR)
+rm(list=ls())     
+graphics.off()    
+
+paquetes <- c("tidyverse", "foreign", "factoextra", "ggplot2", "psych", "htmltools", "klaR")
+for (i in paquetes) {if (!require(i, character.only = TRUE)) {install.packages(i);library(i, character.only = TRUE)} else {library(i, character.only = TRUE)}}
 
 
 #1. Cargar base
 
-setwd("...")
+# URL del archivo
+url <- "https://github.com/jcms2665/UNAM-LCF-2023/raw/main/4.%20An%C3%A1lisis%20factorial%20con%20datos%20categ%C3%B3ricos/Latinobarometro_2018_Esp_R_v20190303.rds"
 
-latino <- readRDS("Latinobarometro_2018_Esp_R_v20190303.Rds")
+# Descargar el archivo a un archivo temporal
+tmp_file <- tempfile()
+download.file(url, tmp_file, method = "libcurl")
 
+# Leer el archivo .rds
+latino <- readRDS(tmp_file)
 
 
 # Variables:
