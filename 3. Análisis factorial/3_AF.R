@@ -22,17 +22,16 @@
 rm(list=ls())     
 graphics.off()    
 
-library(foreign)
-library(factoextra)
-library(ggplot2)
-library(psych)
-library(dplyr)
+paquetes <- c("tidyverse", "foreign", "factoextra", "ggplot2", "psych")
+for (i in paquetes) {if (!require(i, character.only = TRUE)) {install.packages(i);library(i, character.only = TRUE)} else {library(i, character.only = TRUE)}}
+
+
 
 #1. Cargar base
 
-setwd("...")
+url <- "https://raw.githubusercontent.com/jcms2665/UNAM-LCF-2023/main/3.%20An%C3%A1lisis%20factorial/pacientes.csv"
+pacientes<-read.csv(url)
 
-pacientes<-read.csv("pacientes.csv", sep=",",header = TRUE)
 View(pacientes)
 
 #2. Ajuste del modelo
@@ -63,3 +62,4 @@ fit <- factanal(pacientes, 2, rotation="varimax")
 #4. Interpretacion 
 load <- fit$loadings[,1:2]
 load
+
